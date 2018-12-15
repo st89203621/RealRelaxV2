@@ -1,18 +1,17 @@
 package com.ehear.aiot.cloud.util;
 
+import com.ehear.aiot.cloud.common.Constonts;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import com.ehear.aiot.cloud.common.Constonts;
-import org.apache.log4j.Logger;
 
-
+@Slf4j
 public class ServerSetting {
-    private static Logger log = Logger.getLogger(ServerSetting.class);
-
     /**
      * 加载配置参数
      */

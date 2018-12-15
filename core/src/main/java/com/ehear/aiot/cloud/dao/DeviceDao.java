@@ -1,7 +1,6 @@
 package com.ehear.aiot.cloud.dao;
 
 import com.ehear.aiot.cloud.model.DeviceBean;
-import com.ehear.aiot.cloud.util.JdbcUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;

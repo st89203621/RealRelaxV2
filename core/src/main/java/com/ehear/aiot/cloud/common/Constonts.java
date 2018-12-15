@@ -1,15 +1,11 @@
 package com.ehear.aiot.cloud.common;
 
 public class Constonts {
-	// server configure file full name
 	public final static String SERVER_CONFIG_FILE_NAME = "realRelax.properties";
-	// log configure file full name
 	public final static String LOG_CONFIG_FILE_NAME = "log4j.properties";
 
-	// is development environment?
 	public static boolean DEV_ENV = false;
 
-	// JDBC configure
 	public static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	public static String JDBC_URL = "jdbc:mysql://localhost:3306/hikam_push_server?useUnicode=true&characterEncoding=UTF-8";
 	public static String JDBC_USERNAME = "root";

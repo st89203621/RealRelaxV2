@@ -1,9 +1,8 @@
 package com.ehear.aiot.cloud.dao;
 
-import com.ehear.aiot.cloud.util.JdbcUtils;
+
+import com.ehear.aiot.cloud.model.OperationBean;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Slf4j
 public class OperationDao {
-    public static boolean addOperation(com.realrelax.alexa.bean.OperationBean ob) {
+    public static boolean addOperation(OperationBean ob) {
         int result = 0;
         QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
         String sql = "INSERT INTO  operation (custom_id, operation_desc, operation_time) VALUES (?,?,?)";
@@ -29,12 +28,12 @@ public class OperationDao {
         return (result > 0) ? true : false;
     }
 
-    public static List<com.realrelax.alexa.bean.OperationBean> getOperationListByCustomId(int custom_id) {
+    public static List<OperationBean> getOperationListByCustomId(int custom_id) {
         QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-        List<com.realrelax.alexa.bean.OperationBean> OperationBeanList = new ArrayList<com.realrelax.alexa.bean.OperationBean>();
+        List<OperationBean> OperationBeanList = new ArrayList<OperationBean>();
         String sql = "SELECT operation_id operationId, custom_id customId, operation_desc operationDesc, operation_time operationTime FROM operation WHERE custom_id = ? order by operation_time";
         try {
-            OperationBeanList = runner.query(sql, new BeanListHandler<com.realrelax.alexa.bean.OperationBean>(com.realrelax.alexa.bean.OperationBean.class), custom_id);
+            OperationBeanList = runner.query(sql, new BeanListHandler<OperationBean>(OperationBean.class), custom_id);
         } catch (SQLException e) {
             log.error(e.getMessage());
         }
@@ -79,10 +78,10 @@ public class OperationDao {
 
     public static String getOperationDescById(int operationId) {
         QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-        List<com.realrelax.alexa.bean.OperationBean> OperationBeanList = new ArrayList<com.realrelax.alexa.bean.OperationBean>();
+        List<OperationBean> OperationBeanList = new ArrayList<OperationBean>();
         String sql = "SELECT operation_id operationId, custom_id customId, operation_desc operationDesc, operation_time operationTime FROM operation WHERE operation_id = ? order by operation_desc";
         try {
-            OperationBeanList = runner.query(sql, new BeanListHandler<com.realrelax.alexa.bean.OperationBean>(com.realrelax.alexa.bean.OperationBean.class), operationId);
+            OperationBeanList = runner.query(sql, new BeanListHandler<OperationBean>(OperationBean.class), operationId);
         } catch (SQLException e) {
             log.error(e.getMessage());
         }

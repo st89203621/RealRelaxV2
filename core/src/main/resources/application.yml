@@ -1,8 +1,25 @@
+server:
+  port: 8888
+
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test
+    url: jdbc:mysql://localhost:3306/hikam_push_server?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
 
-server:
-  port: 8888
+mybatis:
+  type-aliases-package: com.ehear.aiot.cloud.model.domain;com.github.trang.typehandlers.alias
+  type-handlers-package: com.github.trang.typehandlers.type
+  mapper-locations: classpath:mappers/*.xml
+  check-config-location: false
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: false
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+mapper:
+  mappers:
+  - com.ehear.aiot.cloud.common.BaseMapper
+  not-empty: true
+  identity: MYSQL
+
