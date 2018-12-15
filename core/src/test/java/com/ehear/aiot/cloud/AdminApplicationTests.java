@@ -1,4 +1,4 @@
-package ehear;
+package com.ehear.aiot.cloud;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
